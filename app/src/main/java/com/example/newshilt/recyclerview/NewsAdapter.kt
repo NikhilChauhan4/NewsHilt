@@ -10,9 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newshilt.R
 import com.example.newshilt.data.Article
+import javax.inject.Inject
 import kotlin.math.log
 
-class NewsAdapter(private val newsItemList: List<Article>) :
+class NewsAdapter @Inject constructor(private val newsItemList: List<Article>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
