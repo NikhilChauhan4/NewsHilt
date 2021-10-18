@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NewsHilt</string>
+    <string name="title_activity_detail_news">DetailNewsActivity</string>
 </resources>

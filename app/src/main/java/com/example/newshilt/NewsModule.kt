@@ -1,9 +1,8 @@
 package com.example.newshilt
 
-import com.example.newshilt.network.NewsApiHelper
-import com.example.newshilt.network.NewsApiHelperImpl
-import com.example.newshilt.network.NewsService
-import com.example.newshilt.repository.NewsRepository
+import com.example.core.domain.network.NewsApiHelper
+import com.example.core.domain.network.NewsApiHelperImpl
+import com.example.core.domain.network.NewsService
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

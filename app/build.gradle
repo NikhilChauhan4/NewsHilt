@@ -16,6 +16,9 @@ android {
         versionName "1.0"
         buildConfigField 'String', 'BASE_URL', "\"https://newsapi.org/v2/\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {
@@ -25,6 +28,7 @@ android {
         }
         buildFeatures {
             dataBinding true
+            compose true
         }
     }
     compileOptions {
@@ -33,11 +37,31 @@ android {
     }
     kotlinOptions {
         jvmTarget = '11'
+        useIR = true
+    }
+    composeOptions {
+        kotlinCompilerVersion '1.4.32'
+
+    }
+    buildFeatures {
+        compose true
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
 dependencies {
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    def lifecycle_version = "2.4.0-rc01"
+    def arch_version = "2.1.0"
+    def paging_version = "3.0.1"
 
+    implementation project(":core")
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
@@ -49,9 +73,6 @@ dependencies {
     kapt 'com.google.dagger:hilt-android-compiler:2.38.1'
     kapt "com.google.dagger:hilt-compiler:2.38.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-rc01"
-
-    def lifecycle_version = "2.4.0-rc01"
-    def arch_version = "2.1.0"
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -71,7 +92,7 @@ dependencies {
 
     // optional - ReactiveStreams support for LiveData
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
 
     // optional - Test helpers for LiveData
     testImplementation "androidx.arch.core:core-testing:$arch_version"
@@ -86,5 +107,34 @@ dependencies {
     kapt 'com.github.bumptech.glide:compiler:4.12.0'
 
     //Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.5'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
+
+    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
+
+    // alternatively - without Android dependencies for tests
+    testImplementation("androidx.paging:paging-common-ktx:$paging_version")
+
+    // optional - RxJava3 support
+    implementation("androidx.paging:paging-rxjava3:$paging_version")
+
+    // optional - Guava ListenableFuture support
+    implementation("androidx.paging:paging-guava:$paging_version")
+
+    // optional - Jetpack Compose integration
+    implementation("androidx.paging:paging-compose:1.0.0-alpha14")
+
+    // Integration with activities
+    implementation 'androidx.activity:activity-compose:1.3.1'
+    // Compose Material Design
+    implementation 'androidx.compose.material:material:1.0.4'
+    // Animations
+    implementation 'androidx.compose.animation:animation:1.0.4'
+    // Tooling support (Previews, etc.)
+    implementation 'androidx.compose.ui:ui-tooling:1.0.4'
+    // Integration with ViewModels
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-rc01'
+    // UI Tests
+    androidTestImplementation 'androidx.compose.ui:ui-test-junit4:1.0.4'
+    // When using a MDC theme
+    implementation "com.google.android.material:compose-theme-adapter:1.0.4"
 }

@@ -1,7 +1,6 @@
-package com.example.newshilt.data
+package com.example.core.domain
 
 import com.google.gson.annotations.SerializedName
-import java.io.StringBufferInputStream
 
 data class NewsResponse(
     val status: String, val totalResults: Int,

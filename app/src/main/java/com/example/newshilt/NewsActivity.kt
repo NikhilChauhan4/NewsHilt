@@ -1,14 +1,16 @@
 package com.example.newshilt
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.compose.ui.res.integerArrayResource
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newshilt.data.Article
+import com.example.core.domain.Article
 import com.example.newshilt.databinding.ActivityNewsBinding
 import com.example.newshilt.recyclerview.NewsAdapter
 import com.example.newshilt.viewmodel.NewsViewModel
@@ -36,5 +38,10 @@ class NewsActivity : AppCompatActivity() {
                 adapter.setNewsItemList(newsList)
                 adapter.notifyDataSetChanged()
             })
+        adapter.onItemClick = {
+            val intent = Intent(this, DetailNewsActivity::class.java)
+            intent.putExtra("news_url",it)
+            startActivity(intent)
+        }
     }
 }

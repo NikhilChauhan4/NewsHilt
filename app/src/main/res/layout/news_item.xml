@@ -4,9 +4,6 @@
 
     <data>
 
-        <variable
-            name="article"
-            type="com.example.newshilt.data.Article" />
     </data>
 
     <LinearLayout

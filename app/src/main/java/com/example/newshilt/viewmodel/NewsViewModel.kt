@@ -3,14 +3,9 @@ package com.example.newshilt.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.newshilt.data.Article
-import com.example.newshilt.data.NewsResponse
-import com.example.newshilt.repository.NewsRepository
+import com.example.core.domain.Article
+import com.example.core.domain.repository.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.internal.util.HalfSerializer.onError
-import io.reactivex.rxjava3.observers.DisposableSingleObserver
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
