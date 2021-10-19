@@ -1,17 +1,23 @@
 package com.example.newshilt.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.core.domain.Article
+import com.example.core.domain.repository.NewsPagingDataSource
 import com.example.core.domain.repository.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(private val newsRepository: NewsRepository) : ViewModel() {
-    val newsItems = MutableLiveData<List<Article>>()
+    var newsItemsFlow = flowOf<PagingData<Article>>()
     var job: Job? = null
     private val errorMessage = MutableLiveData<String>()
 
@@ -24,18 +30,13 @@ class NewsViewModel @Inject constructor(private val newsRepository: NewsReposito
     }
 
     private fun getTopHeadlines(country: String, apiKey: String) {
-        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
-            val response = newsRepository.getTopHeadlines(country, apiKey)
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-                    newsItems.postValue(response.body()?.articles)
-                } else {
-                    Log.d("TAG_NEWS_REPO", "onSuccess: " + response.message())
-                    onError("Error : ${response.message()} ")
-                }
-            }
-        }
 
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            newsItemsFlow =
+                Pager(config = PagingConfig(pageSize = 20, prefetchDistance = 2),
+                    pagingSourceFactory = { NewsPagingDataSource(newsRepository) }
+                ).flow.cachedIn(viewModelScope)
+        }
     }
 
     override fun onCleared() {

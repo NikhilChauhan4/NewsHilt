@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="article"
+            type="com.example.core.domain.Article" />
     </data>
 
     <LinearLayout
@@ -33,6 +36,7 @@
                     android:id="@+id/source"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{article.source.name}"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -42,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="5"
                     android:minLines="2"
+                    android:text="@{article.title}"
                     android:textSize="18sp" />
 
                 <TextView
@@ -50,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="5"
                     android:minLines="2"
+                    android:text="@{article.description}"
                     android:textSize="18sp" />
 
                 <LinearLayout
@@ -62,6 +68,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.4"
+                        android:text="@{article.author}"
                         android:textSize="18sp" />
 
                     <TextView
@@ -69,6 +76,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
+                        android:text="@{article.publishedAt}"
                         android:textSize="18sp" />
                 </LinearLayout>
 
