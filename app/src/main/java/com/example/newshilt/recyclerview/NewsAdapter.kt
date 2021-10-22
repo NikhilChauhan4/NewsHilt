@@ -1,16 +1,13 @@
 package com.example.newshilt.recyclerview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.core.domain.Article
+import com.example.domain.data.Article
 import com.example.newshilt.R
 import com.example.newshilt.databinding.NewsItemBinding
 import javax.inject.Inject

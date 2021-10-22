@@ -29,10 +29,10 @@
             android:label="@string/title_activity_detail_news"
             android:theme="@style/Theme.NewsHilt.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".NewsActivity"
             android:exported="true" />
         <activity
-            android:name=".NewsActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

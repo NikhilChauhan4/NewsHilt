@@ -7,9 +7,9 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.core.domain.Article
 import com.example.core.domain.repository.NewsPagingDataSource
 import com.example.core.domain.repository.NewsRepository
+import com.example.domain.data.Article
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.flowOf

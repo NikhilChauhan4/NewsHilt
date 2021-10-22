@@ -1,5 +1,6 @@
-package com.example.newshilt
+package com.example.core.domain.di
 
+import com.example.core.BuildConfig.BASE_URL
 import com.example.core.domain.network.NewsApiHelper
 import com.example.core.domain.network.NewsApiHelperImpl
 import com.example.core.domain.network.NewsService
@@ -20,7 +21,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NewsModule {
     @Provides
-    fun provideBaseUrl() = BuildConfig.BASE_URL
+    fun provideBaseUrl() = BASE_URL
 
     @Provides
     @Singleton

@@ -1,16 +1,9 @@
 package com.example.core.domain.repository
 
 import android.net.Uri
-import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.core.domain.Article
-import com.example.core.domain.NewsResponse
-import com.example.core.domain.network.NewsService
-import kotlinx.coroutines.flow.toList
-import okio.IOException
-import retrofit2.HttpException
-import retrofit2.Response
+import com.example.domain.data.Article
 import javax.inject.Inject
 
 class NewsPagingDataSource @Inject constructor(private val repository: NewsRepository) :

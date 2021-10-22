@@ -1,8 +1,7 @@
 package com.example.core.domain.network
 
-import com.example.core.data.SourceResponse
-import com.example.core.domain.NewsResponse
-import kotlinx.coroutines.Job
+import com.example.domain.data.NewsResponse
+import com.example.domain.data.SourceResponse
 import retrofit2.Response
 import javax.inject.Inject
 

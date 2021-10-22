@@ -1,10 +1,10 @@
 package com.example.core.domain.repository
 
-import com.example.core.data.SourceResponse
-import com.example.core.domain.NewsResponse
 import com.example.core.domain.network.NewsService
-import javax.inject.Inject
+import com.example.domain.data.NewsResponse
+import com.example.domain.data.SourceResponse
 import retrofit2.Response
+import javax.inject.Inject
 
 
 class NewsRepository @Inject constructor(private val newsService: NewsService) {
